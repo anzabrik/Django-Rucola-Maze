@@ -1,0 +1,24 @@
+{% extends 'inventory/layout.html' %}
+{% block title %}
+New Purchase
+{% endblock %}
+
+{% block body %}
+<div class="h1">
+    <h1>New Purchase</h1>
+</div>
+{% if available_menu_items %}
+<form method="POST">
+    {% csrf_token %}
+    <label for="menu_item_id">Menu item: </label>
+    <select name="menu_item" id="menu_item_id">
+        {% for menu_item in available_menu_items %}
+        <option value={{ menu_item.id }}>{{ menu_item.title }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Save changes" class="btn btn-primary">
+</form>
+{% else %}
+<p>Sorry, it looks like out menu is not available at the moment!</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'inventory/layout.html' %}
+{% block title %}
+Revenue, cost of purchase, profit: calculations
+{% endblock %}
+
+{% block body %}
+
+<div class="h1">
+    <h1>How much have we made?</h1>
+</div>
+<table class="table table-bordered w-auto">
+    <tr>
+        <td>Total revenue (sum of all recorded purchases)</td>
+        <td>${{ revenue }}</td>
+    </tr>
+    <tr>
+        <td>Total cost of purchases (sum of cost of all ingredients used)</td>
+        <td>${{ cost_of_ingredients|floatformat:2 }}</td>
+    </tr>
+    <tr>
+        <td>Profit (revenue - cost)</td>
+        <td>${{ profit|floatformat:2 }}</td>
+    </tr>
+</table>
+
+{% endblock %}

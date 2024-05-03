@@ -1,0 +1,41 @@
+{% extends 'inventory/layout.html' %}
+{% block title %}
+Recipe Requirements
+{% endblock %}
+
+{% block body %}
+
+<div class="h1">
+    <h1>Recipe Requirements</h1>
+</div>
+<div><a class="btn btn-primary btn-lg right" href="{% url 'recipe_requirement_new' %}" role="button">Add Recipe
+        Requirement</a>
+</div>
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>Menu Item</th>
+            <th>Ingredient</th>
+            <th>Quantity Required</th>
+            <th>Unit</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    {% for recipe_requirement in object_list %}
+    <tr>
+        <td>{{ recipe_requirement.menu_item }}</td>
+        <td>{{ recipe_requirement.ingredient }}</td>
+        <td>{{ recipe_requirement.quantity_required }}</td>
+        <td>{{ recipe_requirement.ingredient.unit }}</td>
+        <td><a href="{% url 'recipe_requirement_edit' recipe_requirement.id %}"><button
+                    class="btn btn-primary">Edit</button></a>
+        </td>
+        <td><a href="{% url 'recipe_requirement_delete' recipe_requirement.id %}">❌</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

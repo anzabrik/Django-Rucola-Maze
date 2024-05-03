@@ -1,0 +1,39 @@
+{% extends 'inventory/layout.html' %}
+{% block title %}
+Ingredients
+{% endblock %}
+
+{% block body %}
+
+<div class="h1">
+    <h1>Ingredients</h1>
+</div>
+<div><a class="btn btn-primary btn-lg right" href="{% url 'ingredient_new' %}" role="button">Add Ingredient</a>
+</div>
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>Name</th>
+            <th>Quantity available</th>
+            <th>Unit</th>
+            <th>Price per unit</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    {% for ingredient in object_list %}
+    <tr>
+        <td>{{ ingredient.name }}</td>
+        <td>{{ ingredient.quantity_available }}</td>
+        <td>{{ ingredient.unit }}</td>
+        <td>{{ ingredient.unit_price }} per {{ ingredient.unit }}</td>
+        <td><a href="{% url 'ingredient_edit' ingredient.id %}"><button class="btn btn-primary">Edit</button></a>
+        </td>
+        <td><a href="{% url 'ingredient_delete' ingredient.id %}">❌</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}
