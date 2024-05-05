@@ -8,14 +8,6 @@
 
 The app keeps track of the restaurant inventory and purchases. It shows which menu items are available, registers purchases, updates the amount of each ingredient and automatically calculates revenue and profit. Manipulations are available for registered users only.
 
-## Structure
-
-The app can be broken down into two sub-apps, each taking form of a separate blueprint:
-
-- 'inventory', which performs all the operations with ingredients, menu items, purchases. URLs have no prefix as this sub-app is more important.
-- 'auth', which is responsible for user authorization and authentication. URLs for this blueprint contain 'auth'.
-Each sub-app has a separate views file ('inventory.py' and 'auth.py') and a separate template folder. The sub-apps are brought together via the '__init__.py' file, which contains an app factory function.
-
 ## Models
 
 There are four models in addition to the User model: Ingredient, MenuItem, RecipeRequirement, and Purchase.
@@ -27,24 +19,20 @@ So, a MenuItem has many RecipeRequirements and an Ingredient is part of many Rec
 
 ### Ingredients
 
-The 'Ingredients' page lists all ingredients in alphabetical order, including their names, amount in stock and price per unit.
+The 'Ingredients' page lists all ingredients, including their names, amount in stock and price per unit.
 You can manipulate ingredients:
 
 - add ingredients using the respective button at the top the 'Ingredients' page
 - edit or delete ingredients using the buttons next to the nam
 
-The data from the user is collected via WTForms. Flask's 'flash' function is used to show a message for the user at the top of the page that confirms the user's last action. For instance, 'You've added the ingredient 'egg', $0,20 per item.
-
-It can be useful because, as the tables becomes longer, it might be time-consuming to scroll the page down and look for the ingredient you've added to check out whether the action was successful. Also, when there's the need, for instance, to add multiple ingredients, the user might forget which ingredient was just added and try to add it again. The message helps to avoid such situations, and also gives the user a chance to immediately catch typos in the name of the ingredient or its price.
-
-If the user by mistake tries to add an ingredient with the same name, the app refuses to do so and prints out an error message.
+The data from the user is collected via Django Forms. If the user by mistake tries to add an ingredient with the same name, the app refuses to do so and prints out an error message.
 
 ### Menu Items
 
-The 'Menu Items' page lists all menu items with their names and prices in alphabetical order. It shows which ingredients (and how much of them) are required to cook this item (the 'Recipe Requirements' column) and whether the ingredients are in stock (the 'Available' column).
+The 'Menu Items' page lists all menu items with their names and prices. It shows which ingredients (and how much of them) are required to cook this item (the 'Recipe Requirements' column) and whether the ingredients are in stock (the 'Available' column).
 
-This seems convenient so that the staff has all the information at once without the need to visit any additional pages. We will describe the mechanism behind this features later in the 'How do we check whether a menu item is available?' section.
-You can add, edit or delete Menu Items, with error or confirmation messages, in the same way as ingredients.
+This seems convenient so that the staff has all the information at once without the need to visit any additional pages. We will describe the mechanism behind these features later in the 'How do we check whether a menu item is available?' section.
+You can add, edit or delete Menu Items in the same way as ingredients.
 
 ### Recipe Requirements
 
@@ -86,7 +74,3 @@ The aim of the app's homepage, 'Profit&Revenue', is to show how much money the r
 - total revenue (sum of all recorded purchases)
 - total cost of purchases (sum of cost of all ingredients used)
 - profit (revenue - cost)
-
-## Using the app: the authentication part
-
-All the functions from the 'Inventory' sub-app are available only for registered and logged in users ('auth' blueprint). The user is registered/logged in via a WTForm, and the LoginManager and UserMixin are used for additional functionality. When the user is trying to reach the pages they don't have the right to access, the 'unauthorized.html' template is rendered explaining what is going on.
