@@ -69,7 +69,7 @@ But, as a single menu item typically contains several ingredients, we'll have to
 
 ### Purchases
 
-The 'Purchases' page lists all the purchases that have been already made: the name of the menu item and the time. You can add new purchases or delete some of the existing ones.
+The 'Purchases' page lists all the purchases that have been already made: the name of the menu item and the time. You can add new purchases, edit a purchase or delete some of the existing ones.
 
 The 'Add purchase' page shows only the menu items that are currently available. This approach helps to eliminate situation when a customer decides to order something and then finds out that the item is unavailable.
 
@@ -77,7 +77,7 @@ The 'Add purchase' page shows only the menu items that are currently available. 
 
 As soon as a purchase is added, the required quantity of every ingredient needed for the menu item is subtracted from the available amount of ingredients. The result is reflected in the column 'Quantity available' of the 'Ingredients' page. If as a result of this, a menu item becomes unavailable, this is reflected on the page 'Menu Items'.
 
-In this app, when you add a purchase, it means that the menu item was cooked (the ingredients are subtracted permanently). So, you cannot edit a purchase. You can only completely delete a purchase so it will be ignored in revenue/profit calculations. This means that although the menu item was cooked, the restaurant didn't receive the money for it (e.g. the client found some problems with the dish and refused to pay).
+In this app, when you add a purchase, it means that the menu item was cooked (the ingredients are subtracted permanently). If a purchase is deleted, it will be ignored in revenue/profit calculations. This means that although the menu item was cooked, the restaurant didn't receive the money for it (e.g. the client found some problems with the dish and refused to pay).
 
 ### Profit & Revenue calculations
 
