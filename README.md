@@ -1,7 +1,5 @@
 # Rucola Maze: a Django App That Keeps Track of Restaurant Inventory and Purchases
 
-## Video Demo
-
 [Video Demo](https://youtu.be/MKNazHb1nDc)
 
 ## What the app does
