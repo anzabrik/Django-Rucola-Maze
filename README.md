@@ -2,8 +2,7 @@
 
 ## Video Demo
 
-[Video Demo](). - in Russian
-[Video Demo](). - in English
+[Video Demo](https://youtu.be/MKNazHb1nDc)
 
 ## What the app does
 
